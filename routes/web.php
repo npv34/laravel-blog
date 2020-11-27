@@ -18,7 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->group(function () {
+Route::get('login', [\App\Http\Controllers\AuthController::class, 'showFormLogin'])->name('login');
+Route::post('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('auth.login');
+
+Route::middleware(['auth', 'checkActiveAccount'])->prefix('admin')->group(function () {
+
+    Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('auth.logout');
+
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('users.index');
         Route::get('/{id}/edit', [UserController::class, 'edit'])->name('users.edit');

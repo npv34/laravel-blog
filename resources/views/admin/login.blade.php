@@ -12,40 +12,22 @@
 </head>
 <body>
 <div class="container">
-    @include('admin.core.navbar')
-    <div class="col-12 col-md-12 mt-4">
-        <div class="card">
-            <h5 class="card-header">Danh sách người dùng</h5>
-            <div class="card-body">
-                <a href="{{ route('users.create') }}" class="btn btn-success">Thêm mới</a>
-
-                <table class="table mt-2">
-                    <thead class="thead-light">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tên</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">SDT</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($users as $key => $user)
-                    <tr>
-                        <th scope="row">{{ $key + 1 }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->phone }}</td>
-                        <td><a href="{{ route('users.edit', $user['id']) }}" class="btn btn-primary">Edit</a></td>
-                    </tr>
-                    @endforeach
-
-                    </tbody>
-                </table>
+    <div class="col-12 col-md-12">
+        <form action="{{ route('auth.login') }}" method="post">
+            @csrf
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
-        </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 </div>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

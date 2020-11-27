@@ -2,43 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\UserService;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    function index() {
-        $users = [
-            [
-                "id" => 1,
-                "name" => "Tran",
-                "email" => "tran@gmail.com",
-                "address" => "Hue"
-            ],
-            [
-                "id" => 2,
-                "name" => "An",
-                "email" => "an@gmail.com",
-                "address" => "Hue"
-            ],
-            [
-                "id" => 3,
-                "name" => "Nam",
-                "email" => "nam@gmail.com",
-                "address" => "Hue"
-            ]
-        ];
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
+    function index()
+    {
+        $users = $this->userService->getAll();
         return view('admin.users.list', compact('users'));
     }
 
-    function edit($id) {
+    function edit($id)
+    {
 
     }
 
-    function create() {
+    function create()
+    {
         return view('admin.users.create');
     }
 
-    function store(Request $request) {
-        dd($request->all());
+    function store(Request $request)
+    {
+        $this->userService->create($request);
+        return redirect()->route('users.index');
     }
 }

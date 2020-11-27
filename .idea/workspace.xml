@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34a21a1f-e4df-4c52-91a9-3b7bb8867e31" name="Default Changelist" comment="" />
+    <list default="true" id="34a21a1f-e4df-4c52-91a9-3b7bb8867e31" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/StatusConst.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Repositories/UserRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Services/UserService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/core/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/core/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -147,6 +163,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606361219206</updated>
       <workItem from="1606361220845" duration="1429000" />
+      <workItem from="1606445167404" duration="4059000" />
     </task>
     <servers />
   </component>
@@ -154,9 +171,19 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="466" y="351" key="NewPhpFileDialog" timestamp="1606362367007">
+    <state x="327" y="98" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606448711718">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="327" y="98" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1606448711718" />
+    <state x="434" y="143" key="NewPhpClassDialog" timestamp="1606448689383">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="434" y="143" key="NewPhpClassDialog/0.0.1440.900@0.0.1440.900" timestamp="1606448689383" />
+    <state x="579" y="172" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606446849635" />
+    <state x="621" y="421" key="NewPhpFileDialog" timestamp="1606445861845">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
     <state x="466" y="351" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1606362367007" />
+    <state x="621" y="421" key="NewPhpFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606445861845" />
   </component>
 </project>
