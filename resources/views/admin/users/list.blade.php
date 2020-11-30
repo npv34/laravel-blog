@@ -1,61 +1,52 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-<div class="container">
-    @include('admin.core.navbar')
-    <div class="col-12 col-md-12 mt-4">
-        <div class="card">
-            <h5 class="card-header">Danh sách người dùng</h5>
-            <div class="card-body">
-                <a href="{{ route('users.create') }}" class="btn btn-success">Thêm mới</a>
-
-                <table class="table mt-2">
-                    <thead class="thead-light">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tên</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">SDT</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($users as $key => $user)
-                    <tr>
-                        <th scope="row">{{ $key + 1 }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->phone }}</td>
-                        <td><a href="{{ route('users.edit', $user['id']) }}" class="btn btn-primary">Edit</a></td>
-                    </tr>
-                    @endforeach
-
-                    </tbody>
-                </table>
-            </div>
+@extends('admin.master')
+@section('page-title','Danh sach nguoi dung')
+@section('breadcrumb')
+    <ol class="breadcrumb border-0 m-0 px-0 px-md-3">
+        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a href="#">Quản lý người dùng</a></li>
+        <li class="breadcrumb-item active">Danh sách người dùng</li>
+        <!-- Breadcrumb Menu-->
+    </ol>
+@endsection
+@section('content')
+    <div class="card">
+        <div class="card-header"> DataTables
+            <div class="card-header-actions"><a class="card-header-action" href="https://datatables.net" target="_blank"><small class="text-muted">docs</small></a></div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-bordered datatable">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($users as $user)
+                <tr>
+                    <td>{{ $user->username }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>Member</td>
+                    <td><span class="badge {{ ($user->status == \App\Http\Controllers\StatusConst::ACTIVE) ? 'badge-success': 'badge-info' }} ">
+                            {{ ($user->status == \App\Http\Controllers\StatusConst::ACTIVE) ? 'active': 'disable' }}
+                        </span></td>
+                    <td><a class="btn btn-success" href="#">
+                            <svg class="c-icon">
+                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-magnifying-glass') }}"></use>
+                            </svg></a><a class="btn btn-info" href="#">
+                            <svg class="c-icon">
+                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-description') }}"></use>
+                            </svg></a><a class="btn btn-danger" href="#">
+                            <svg class="c-icon">
+                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-trash') }}"></use>
+                            </svg></a></td>
+                </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-</div>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+@endsection

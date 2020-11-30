@@ -1,43 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--
+* CoreUI Pro based Bootstrap Admin Template
+* @version v3.2.0
+* @link https://coreui.io/pro/
+* Copyright (c) 2020 creativeLabs Łukasz Holeczek
+* License (https://coreui.io/pro/license)
+-->
 <html lang="en">
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
+    <base href="./">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>CoreUI Pro Bootstrap Admin Template</title>
+    <!-- Main styles for this application-->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="c-app flex-row align-items-center">
 <div class="container">
-    <div class="col-12 col-md-12">
-        <form action="{{ route('auth.login') }}" method="post">
-            @csrf
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp" placeholder="Enter email">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card-group">
+                <div class="card p-4">
+                    <form method="post" action="{{ route('auth.login') }}">
+                        @csrf
+                    <div class="card-body">
+                        <h1>Login</h1>
+                        <p class="text-muted">Sign In to your account</p>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend"><span class="input-group-text">
+                      <svg class="c-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                      </svg></span></div>
+                            <input name="username" class="form-control" type="text" placeholder="Username">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text">
+                      <svg class="c-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                      </svg></span></div>
+                            <input name="password" class="form-control" type="password" placeholder="Password">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-primary px-4" type="submit">Login</button>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button class="btn btn-link px-0" type="button">Forgot password?</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+
+        </div>
     </div>
 </div>
+<!-- CoreUI and necessary plugins-->
+<script src="{{ asset('vendors/@coreui/coreui-pro/js/coreui.bundle.min.js') }}"></script>
+<!--[if IE]><!-->
+<script src="{{ asset('vendors/@coreui/icons/js/svgxuse.min.js') }}"></script>
+<!--<![endif]-->
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        setTimeout(function() {
+            document.body.classList.remove('c-no-layout-transition')
+        }, 2000);
+    });
+</script>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 </body>
 </html>

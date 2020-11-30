@@ -14,14 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('login', [\App\Http\Controllers\AuthController::class, 'showFormLogin'])->name('login');
 Route::post('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('auth.login');
 
 Route::middleware(['auth', 'checkActiveAccount'])->prefix('admin')->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
 
     Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('auth.logout');
 
