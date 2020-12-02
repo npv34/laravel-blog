@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\StatusConst;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,4 +39,12 @@ class User extends Authenticatable
     ];
 
     public $timestamps = false;
+
+    function getStatus() {
+        return ($this->status == StatusConst::ACTIVE) ? 'active': 'disable';
+    }
+
+    function roles() {
+        return $this->belongsToMany(Role::class, 'role_user','user_id','role_id');
+    }
 }

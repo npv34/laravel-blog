@@ -11,13 +11,14 @@
 @section('content')
     <div class="card">
         <div class="card-header"> DataTables
-            <div class="card-header-actions"><a class="card-header-action" href="https://datatables.net" target="_blank"><small class="text-muted">docs</small></a></div>
+            <div class="card-header-actions"><a class="card-header-action" href="https://datatables.net"
+                                                target="_blank"><small class="text-muted">docs</small></a></div>
         </div>
         <div class="card-body">
             <table class="table table-striped table-bordered datatable">
                 <thead>
                 <tr>
-                    <th>Username</th>
+                    <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
                     <th>Status</th>
@@ -26,24 +27,34 @@
                 </thead>
                 <tbody>
                 @foreach($users as $user)
-                <tr>
-                    <td>{{ $user->username }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>Member</td>
-                    <td><span class="badge {{ ($user->status == \App\Http\Controllers\StatusConst::ACTIVE) ? 'badge-success': 'badge-info' }} ">
-                            {{ ($user->status == \App\Http\Controllers\StatusConst::ACTIVE) ? 'active': 'disable' }}
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>
+                            @foreach($user->roles as $role)
+                                {{ $role->name . ', '  }}
+                            @endforeach
+                        </td>
+                        <td><span
+                                class="badge {{ ($user->status == \App\Http\Controllers\StatusConst::ACTIVE) ? 'badge-success': 'badge-info' }} ">
+                            {{ $user->getStatus() }}
                         </span></td>
-                    <td><a class="btn btn-success" href="#">
-                            <svg class="c-icon">
-                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-magnifying-glass') }}"></use>
-                            </svg></a><a class="btn btn-info" href="#">
-                            <svg class="c-icon">
-                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-description') }}"></use>
-                            </svg></a><a class="btn btn-danger" href="#">
-                            <svg class="c-icon">
-                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-trash') }}"></use>
-                            </svg></a></td>
-                </tr>
+                        <td><a class="btn btn-success" href="#">
+                                <svg class="c-icon">
+                                    <use
+                                        xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-magnifying-glass') }}"></use>
+                                </svg>
+                            </a><a class="btn btn-info" href="{{ route('users.edit', $user->id) }}">
+                                <svg class="c-icon">
+                                    <use
+                                        xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-description') }}"></use>
+                                </svg>
+                            </a><a class="btn btn-danger" href="">
+                                <svg class="c-icon">
+                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-trash') }}"></use>
+                                </svg>
+                            </a></td>
+                    </tr>
                 @endforeach
                 </tbody>
             </table>

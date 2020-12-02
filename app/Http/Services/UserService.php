@@ -20,15 +20,24 @@ class UserService
     function create($request) {
         $user = new User();
         $user->name = $request->name;
-        $user->username = $request->username;
         $user->password = Hash::make($request->password);
-        $user->role_id = 1;
         $user->email = $request->email;
-        $user->phone = $request->phone;
-        $this->userRepository->save($user);
+        $user->birthday = $request->birthday;
+        $this->userRepository->save($user, $request->roles);
     }
 
     function getAll() {
         return $this->userRepository->getAll();
+    }
+
+    function findById($id) {
+        return $this->userRepository->find($id);
+    }
+
+    function update($user, $request) {
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $this->userRepository->save($user);
     }
 }
